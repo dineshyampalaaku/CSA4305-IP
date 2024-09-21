@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('userimageaccommodation.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .accommodation-container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ddd;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .form-group input[type="text"] {
+            border-color: #ff7e5f;
+        }
+        .form-group select {
+            border-color: #4CAF50;
+        }
+        #message {
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="accommodation-container">
+        <h2>Accommodation Details</h2>
+        <form id="accommodation-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="accommodation-type">Type of Accommodation</label>
+                <select id="accommodation-type" name="accommodation-type" required>
+                    <option value="bachelors">Bachelors</option>
+                    <option value="family">Family</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="payment-method">Payment Method</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="upi">UPI</option>
+                    <option value="net-banking">Net Banking</option>
+                </select>
+            </div>
+
+            <!-- Payment Options (Dynamic) -->
+            <div class="form-group" id="upi-options" style="display:none;">
+                <label for="upi-type">Select UPI App</label>
+                <select id="upi-type" name="upi-type">
+                    <option value="">Select UPI App</option>
+                    <option value="phonepe">PhonePe</option>
+                    <option value="google-pay">Google Pay</option>
+                    <option value="paytm">Paytm</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="bank-options" style="display:none;">
+                <label for="bank-type">Select Bank</label>
+                <select id="bank-type" name="bank-type">
+                    <option value="">Select Bank</option>
+                    <option value="canara">Canara Bank</option>
+                    <option value="sbi">SBI Bank</option>
+                    <option value="axis">Axis Bank</option>
+                    <option value="icici">ICICI Bank</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="payment">Payment Status</label>
+                <select id="payment" name="payment" required>
+                    <option value="paid">Paid</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+        <div id="message" style="display:none;">Complete the payment process</div>
+    </div>
+
+    <script>
+        // Handle Payment Method Selection
+        document.getElementById('payment-method').addEventListener('change', function () {
+            const paymentMethod = this.value;
+            const upiOptions = document.getElementById('upi-options');
+            const bankOptions = document.getElementById('bank-options');
+
+            // Reset options
+            upiOptions.style.display = 'none';
+            bankOptions.style.display = 'none';
+
+            if (paymentMethod === 'upi') {
+                upiOptions.style.display = 'block';
+            } else if (paymentMethod === 'net-banking') {
+                bankOptions.style.display = 'block';
+            }
+        });
+
+        // Handle Form Submission
+        document.getElementById('accommodation-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const paymentStatus = document.getElementById('payment').value;
+            const messageElement = document.getElementById('message');
+
+            if (paymentStatus === 'paid') {
+                // Redirect to a new page
+                window.location.href = 'usernavbar.html'; // Replace with your desired link
+            } else if (paymentStatus === 'pending') {
+                // Show the message
+                messageElement.style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('food.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .food-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1); /* Transparent background */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            text-align: center;
+            color: #fff; /* White color for better contrast */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ddd; /* Light color for visibility */
+        }
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .back-button {
+            font-size: 24px;
+            text-decoration: none;
+            color: #fff; /* White color for better contrast */
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .back-button:hover {
+            color: #000;
+        }
+        .payment-options,
+        .upi-options,
+        .netbanking-options {
+            display: none;
+        }
+        .quote {
+            text-align: center;
+            font-style: italic;
+            margin-top: 20px;
+            color: #ddd; /* Light color for visibility */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="food-container">
+        <a href="usernavbar.html" class="back-button">&#8592; Back</a> <!-- Replace with the back page link -->
+        <h2>Available Food Items</h2>
+        <form id="food-form">
+            <div class="form-group">
+                <label for="food-item">Select Food Item (with price)</label>
+                <select id="food-item" name="food-item" required>
+                    <option value="pizza" data-price="10">$10 - Pizza</option>
+                    <option value="burger" data-price="8">$8 - Burger</option>
+                    <option value="pasta" data-price="12">$12 - Pasta</option>
+                    <option value="salad" data-price="7">$7 - Salad</option>
+                    <option value="ice-cream" data-price="5">$5 - Ice Cream</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="payment-method">Select Payment Method</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="upi">UPI</option>
+                    <option value="netbanking">Net Banking</option>
+                </select>
+            </div>
+
+            <!-- UPI Options -->
+            <div class="form-group upi-options">
+                <label for="upi-method">Select UPI App</label>
+                <select id="upi-method" name="upi-method">
+                    <option value="phonepe">PhonePe</option>
+                    <option value="gpay">Google Pay</option>
+                    <option value="paytm">Paytm</option>
+                </select>
+            </div>
+
+            <!-- Net Banking Options -->
+            <div class="form-group netbanking-options">
+                <label for="bank-name">Select Bank</label>
+                <select id="bank-name" name="bank-name">
+                    <option value="canara">Canara Bank</option>
+                    <option value="sbi">SBI Bank</option>
+                    <option value="axis">Axis Bank</option>
+                    <option value="icici">ICICI Bank</option>
+                </select>
+            </div>
+
+            <!-- Payment Status -->
+            <div class="form-group">
+                <label>Payment Status:</label>
+                <p id="payment-status"></p>
+            </div>
+
+            <!-- Delivery Status -->
+            <div class="form-group">
+                <label>Delivery Status:</label>
+                <p id="delivery-status"></p>
+            </div>
+        </form>
+
+        <!-- User attraction quote -->
+        <div class="quote">
+            "Good food is the foundation of genuine happiness."
+        </div>
+    </div>
+
+    <script>
+        const foodItemSelect = document.getElementById('food-item');
+        const paymentMethodSelect = document.getElementById('payment-method');
+        const upiOptions = document.querySelector('.upi-options');
+        const netbankingOptions = document.querySelector('.netbanking-options');
+        const paymentStatus = document.getElementById('payment-status');
+        const deliveryStatus = document.getElementById('delivery-status');
+
+        paymentMethodSelect.addEventListener('change', function() {
+            const selectedPayment = this.value;
+            upiOptions.style.display = selectedPayment === 'upi' ? 'block' : 'none';
+            netbankingOptions.style.display = selectedPayment === 'netbanking' ? 'block' : 'none';
+
+            const foodPrice = foodItemSelect.options[foodItemSelect.selectedIndex].getAttribute('data-price');
+            if (selectedPayment === 'credit-card' || selectedPayment === 'debit-card' || selectedPayment === 'upi' || selectedPayment === 'netbanking') {
+                // Payment status is automatically successful when any payment method is selected
+                paymentStatus.textContent = `Payment Successful - Amount: $${foodPrice}`;
+                deliveryStatus.textContent = 'Delivered';
+            } else {
+                // For other payment methods, show empty delivery status
+                paymentStatus.textContent = '';
+                deliveryStatus.textContent = '';
+            }
+        });
+    </script>
+
+</body>
+</html>

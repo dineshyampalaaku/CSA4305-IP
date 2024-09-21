@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Travels</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        header h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            text-align: center;
+            margin: 5px 0;
+            font-style: italic;
+            font-size: 18px;
+            color: #dcdcdc;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #FFD700;
+        }
+
+        .home-link {
+            margin-right: 20px;
+        }
+
+        .navbar-right {
+            margin-left: auto;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            background-image: url('userimagetravel.jpg'); /* Replace with actual image link */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* For mobile responsiveness */
+        <!-- @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-bottom: 10px;
+            }
+
+            .main-image {
+                height: 250px;
+            }
+        } -->
+        footer {
+            background-color: #2c3e50;
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .content h2 {
+                font-size: 1.8em;
+            }
+            .quote {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Wanderlust Travels</h1>
+        <p>"Travel not to escape life, but for life not to escape us."</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="ip1food.html">View Food Details</a></li> <!-- Replace YOUR_LINK_HERE with the actual link -->
+            <li><a href="ip1hostel.html">Hostel Details</a></li> <!-- Replace YOUR_LINK_HERE with the actual link -->
+            <li><a href="ip1route.html">Route Details</a></li> <!-- Replace YOUR_LINK_HERE with the actual link -->
+            <li><a href="ip1accommodation.html">Book Accommodation</a></li> <!-- Replace YOUR_LINK_HERE with the actual link -->
+        </ul>
+        <ul class="navbar-right">
+            <li class="home-link"><a href="index.html">Home</a></li> <!-- Replace YOUR_LINK_HERE with the home page link -->
+        </ul>
+    </nav>
+
+    <div class="main-image">
+        <!-- Image added below the navbar -->
+    </div>
+    <footer>
+        © 2024 Wanderlust Travels - All Rights Reserved
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Management - Manager's Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff; /* Alice blue background */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #4682b4; /* Steel blue */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            background-color: #ff6347; /* Tomato red */
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .section {
+            background-color: #e6e6fa; /* Lavender */
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .section h2 {
+            color: #4682b4;
+        }
+
+        .section p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        label {
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #32cd32; /* Lime green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #228b22; /* Forest green */
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        .inventory, .quality, .pricing, .sales {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column {
+            width: 45%;
+        }
+
+        .highlight {
+            background-color: #ffeb3b; /* Yellow */
+            font-weight: bold;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4500; /* OrangeRed */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #c74309;
+        }
+        .next-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ec1dab; /* Lime green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 1em;
+        }
+
+        .next-button:hover {
+            background-color: #2f3179; /* Forest green */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Food Management Dashboard - Manager's View</h1>
+
+    <div class="section inventory">
+        <div class="column">
+            <h2>Inventory Control</h2>
+            <p>Managers need to keep track of available food items to avoid overstocking or shortages. Maintaining a proper balance in the inventory is key.</p>
+            <label for="stock">Current Stock Level:</label>
+            <input type="number" id="stock" name="stock" placeholder="Enter current stock level">
+        </div>
+        <div class="column">
+            <h2>Quality Management</h2>
+            <p>Ensure the food quality meets standards. Expired or low-quality items should be discarded. Regular checks for freshness are important.</p>
+            <label for="qualityCheck">Last Quality Check Date:</label>
+            <input type="text" id="qualityCheck" name="qualityCheck" placeholder="Enter date of last quality check">
+        </div>
+    </div>
+
+    <div class="section pricing">
+        <div class="column">
+            <h2>Pricing Strategy</h2>
+            <p>Managers determine pricing based on cost and competition. Ensure pricing reflects both quality and affordability.</p>
+            <label for="price">Set Price for Popular Item:</label>
+            <input type="number" id="price" name="price" placeholder="Enter price for a popular item">
+        </div>
+        <div class="column">
+            <h2>Sales Performance</h2>
+            <p>Monitor daily and weekly sales to assess which items are popular and how well they are performing in the market.</p>
+            <label for="salesData">Sales for Last Week:</label>
+            <input type="number" id="salesData" name="salesData" placeholder="Enter total sales">
+        </div>
+    </div>
+
+    <input type="submit" value="Submit Food Management Data">
+
+    <div class="section">
+        <h2>Manager's Additional Thoughts</h2>
+        <p>Food management is not only about stock and pricing but also involves understanding customer preferences, seasonal trends, and cost efficiency. Managers should balance quality with cost and constantly monitor sales trends to make informed decisions.</p>
+        <textarea rows="4" placeholder="Add any additional notes"></textarea>
+    </div>
+
+    <input type="submit" value="Save Additional Notes">
+    <a href="adminnavbar.html" class="next-button">Back to Home Page</a> <!-- Replace YOUR_LINK_HERE with the actual link -->
+
+    <div class="footer">
+        <p>&copy; 2024 Food Management System - Manager's Dashboard</p>
+    </div>
+</div>
+
+</body>
+</html>

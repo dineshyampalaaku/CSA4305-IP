@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Management - Admin View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #34495e;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1em;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        section {
+            margin-bottom: 2em;
+        }
+
+        h2 {
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1em;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .status {
+            color: green;
+        }
+
+        .vacancy {
+            color: red;
+        }
+
+        footer {
+            background-color: #34495e;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .next-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #32cd32; /* Lime green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 1em;
+        }
+
+        .next-button:hover {
+            background-color: #45228b; /* Forest green */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Booking Management Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#search">Search Bookings</a></li>
+                <li><a href="#bookings">Booking Details</a></li>
+                <li><a href="#payments">Payment Handling</a></li>
+                <li><a href="#vacating">Vacating Details</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="search">
+            <h2>Search Bookings by Date</h2>
+            <form>
+                <label for="booking-date">Select Date:</label>
+                <input type="date" id="booking-date" name="booking-date">
+                <input type="submit" value="Search">
+            </form>
+        </section>
+
+        <section id="bookings">
+            <h2>Booking Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Guest Name</th>
+                        <th>Room Number</th>
+                        <th>Check-in Date</th>
+                        <th>Check-out Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BK001</td>
+                        <td>John Doe</td>
+                        <td>101</td>
+                        <td>2024-09-18</td>
+                        <td>2024-09-20</td>
+                        <td class="status">Confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>BK002</td>
+                        <td>Jane Smith</td>
+                        <td>102</td>
+                        <td>2024-09-19</td>
+                        <td>2024-09-21</td>
+                        <td class="status">Confirmed</td>
+                    </tr>
+                    <tr>
+                        <td>BK003</td>
+                        <td>Mike Johnson</td>
+                        <td>103</td>
+                        <td>2024-09-20</td>
+                        <td>2024-09-22</td>
+                        <td class="vacancy">Pending</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="payments">
+            <h2>Payment Handling</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Amount</th>
+                        <th>Payment Status</th>
+                        <th>Payment Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BK001</td>
+                        <td>$300</td>
+                        <td>Paid</td>
+                        <td>2024-09-17</td>
+                    </tr>
+                    <tr>
+                        <td>BK002</td>
+                        <td>$450</td>
+                        <td>Paid</td>
+                        <td>2024-09-18</td>
+                    </tr>
+                    <tr>
+                        <td>BK003</td>
+                        <td>$400</td>
+                        <td>Pending</td>
+                        <td>2024-09-19</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="vacating">
+            <h2>Vacating Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Guest Name</th>
+                        <th>Room Number</th>
+                        <th>Check-out Date</th>
+                        <th>Vacating Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BK001</td>
+                        <td>John Doe</td>
+                        <td>101</td>
+                        <td>2024-09-20</td>
+                        <td>Vacated</td>
+                    </tr>
+                    <tr>
+                        <td>BK002</td>
+                        <td>Jane Smith</td>
+                        <td>102</td>
+                        <td>2024-09-21</td>
+                        <td>Scheduled</td>
+                    </tr>
+                    <tr>
+                        <td>BK003</td>
+                        <td>Mike Johnson</td>
+                        <td>103</td>
+                        <td>2024-09-22</td>
+                        <td>Scheduled</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <a href="adminnavbar.html" class="next-button">Next</a> <!-- Replace YOUR_LINK_HERE with the actual link -->
+
+    </main>
+
+    <!-- <footer>
+        <p>&copy; 2024 Booking Management System</p>
+    </footer> -->
+</body>
+</html>

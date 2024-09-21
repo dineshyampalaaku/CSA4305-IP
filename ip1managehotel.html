@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management - Manager View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1em;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        section {
+            margin-bottom: 2em;
+        }
+
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1em;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 1.5em;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .next-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #32cd32; /* Lime green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 1em;
+        }
+
+        .next-button:hover {
+            background-color: #228b22; /* Forest green */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hotel Management Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#rooms">Room Details</a></li>
+                <li><a href="#bookings">Bookings</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="rooms">
+            <h2>Room Details</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Room Number</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>Single</td>
+                        <td>$100</td>
+                        <td>Available</td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>Double</td>
+                        <td>$150</td>
+                        <td>Occupied</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="bookings">
+            <h2>Bookings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Guest Name</th>
+                        <th>Room Number</th>
+                        <th>Check-in Date</th>
+                        <th>Check-out Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>John Doe</td>
+                        <td>101</td>
+                        <td>2024-09-20</td>
+                        <td>2024-09-22</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Jane Smith</td>
+                        <td>102</td>
+                        <td>2024-09-21</td>
+                        <td>2024-09-23</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="amenities">
+            <h2>Amenities</h2>
+            <ul>
+                <li>Free Wi-Fi</li>
+                <li>24/7 Room Service</li>
+                <li>Fitness Center</li>
+                <li>Spa and Wellness Center</li>
+            </ul>
+        </section>
+        <a href="adminnavbar.html" class="next-button">Next</a> <!-- Replace YOUR_LINK_HERE with the actual link -->
+
+    </main>
+
+    <!-- <footer>
+        <p>&copy; 2024 Hotel Management System</p>
+    </footer> -->
+</body>
+</html>

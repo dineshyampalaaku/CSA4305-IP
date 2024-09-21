@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('userimagehotel.jpg'); /* Ensure the path is correct or use an absolute URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure the background covers the entire viewport */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .accommodation-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff; /* Change text color to fit the theme */
+        }
+
+        form {
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent form background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff; /* Adjusted label color */
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.6); /* Translucent borders */
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.1); /* Slight transparency for inputs */
+            color: #fff; /* Text color for inputs */
+        }
+
+        .form-group select option {
+            color: #000; /* Option text color */
+        }
+
+        .back-button {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            color: #ff7e5f;
+        }
+
+        .quote {
+            text-align: center;
+            font-style: italic;
+            margin-top: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="accommodation-container">
+        <a href="usernavbar.html" class="back-button">&#8592; Back</a> <!-- Replace with the actual back page link -->
+
+        <h2>Accommodation Details</h2>
+
+        <!-- Form for User Input -->
+        <form id="accommodation-form">
+            <div class="form-group">
+                <label for="room-type">Select Room Type</label>
+                <select id="room-type" name="room-type" required>
+                    <option value="">Select Room Type</option>
+                    <option value="single-room" data-price="90">$90 - Single Room</option>
+                    <option value="double-room" data-price="150">$150 - Double Room</option>
+                    <option value="deluxe-suite" data-price="200">$200 - Deluxe Suite</option>
+                    <option value="family-room" data-price="350">$350 - Family Room</option>
+                    <option value="penthouse" data-price="500">$500 - Penthouse</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="check-in-date">Check-In Date</label>
+                <input type="date" id="check-in-date" name="check-in-date" required>
+            </div>
+            <div class="form-group">
+                <label for="check-out-date">Check-Out Date</label>
+                <input type="date" id="check-out-date" name="check-out-date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="payment-method">Payment Method</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="upi">UPI</option>
+                    <option value="net-banking">Net Banking</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="upi-options" style="display:none;">
+                <label for="upi-type">Select UPI App</label>
+                <select id="upi-type" name="upi-type">
+                    <option value="">Select UPI App</option>
+                    <option value="phonepe">PhonePe</option>
+                    <option value="google-pay">Google Pay</option>
+                    <option value="paytm">Paytm</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="bank-options" style="display:none;">
+                <label for="bank-type">Select Bank</label>
+                <select id="bank-type" name="bank-type">
+                    <option value="">Select Bank</option>
+                    <option value="canara">Canara Bank</option>
+                    <option value="sbi">SBI Bank</option>
+                    <option value="axis">Axis Bank</option>
+                    <option value="icici">ICICI Bank</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="payment-status">Payment Status</label>
+                <input type="text" id="payment-status" name="payment-status" value="" readonly>
+            </div>
+        </form>
+
+        <!-- User attraction quote -->
+        <div class="quote">
+            "Your comfort is our priority."
+        </div>
+    </div>
+
+    <script>
+        // Handle Payment Method Selection
+        document.getElementById('payment-method').addEventListener('change', function () {
+            const paymentMethod = this.value;
+            const upiOptions = document.getElementById('upi-options');
+            const bankOptions = document.getElementById('bank-options');
+            const paymentStatus = document.getElementById('payment-status');
+
+            // Reset payment status
+            paymentStatus.value = '';
+
+            if (paymentMethod === 'upi') {
+                upiOptions.style.display = 'block';
+                bankOptions.style.display = 'none';
+            } else if (paymentMethod === 'net-banking') {
+                bankOptions.style.display = 'block';
+                upiOptions.style.display = 'none';
+            } else {
+                upiOptions.style.display = 'none';
+                bankOptions.style.display = 'none';
+            }
+        });
+
+        // Handle Payment Completion
+        document.getElementById('accommodation-form').addEventListener('change', function () {
+            const paymentMethod = document.getElementById('payment-method').value;
+            const paymentStatus = document.getElementById('payment-status');
+            let isPaymentComplete = false;
+
+            if (paymentMethod === 'debit-card' || paymentMethod === 'credit-card') {
+                isPaymentComplete = true;
+            } else if (paymentMethod === 'upi') {
+                const upiType = document.getElementById('upi-type').value;
+                if (upiType) {
+                    isPaymentComplete = true;
+                }
+            } else if (paymentMethod === 'net-banking') {
+                const bankType = document.getElementById('bank-type').value;
+                if (bankType) {
+                    isPaymentComplete = true;
+                }
+            }
+
+            if (isPaymentComplete) {
+                const roomSelect = document.getElementById('room-type');
+                const selectedRoom = roomSelect.options[roomSelect.selectedIndex];
+                const roomPrice = selectedRoom.getAttribute('data-price');
+                paymentStatus.value = `Successful - $${roomPrice}`;
+            } else {
+                paymentStatus.value = '';
+            }
+        });
+    </script>
+
+</body>
+</html>

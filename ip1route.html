@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Route Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('userimageroute.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .route-container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1); /* Light transparent background */
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(15px); /* Blurring the background behind the container */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Frosted border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+            color: #fff; /* White text for contrast */
+        }
+        h2 {
+            text-align: center;
+            color: #fff; /* White color for heading */
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ddd; /* Light grey for label text */
+        }
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent input background */
+            color: #fff; /* White input text */
+            box-sizing: border-box;
+        }
+        /* Ensure options are visible */
+        select, option {
+            color: #000; /* Black text for dropdown options */
+            background-color: rgba(255, 255, 255, 0.9); /* Light background for dropdown options */
+        }
+        .back-button {
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        .back-button:hover {
+            color: #ddd;
+        }
+        .payment-options,
+        .upi-options,
+        .netbanking-options {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="route-container">
+        <a href="usernavbar.html" class="back-button">&#8592; Back</a> <!-- Replace with the actual back page link -->
+
+        <h2>Select Your Travel Route</h2>
+
+        <!-- Form for User Input -->
+        <form id="route-form">
+            <div class="form-group">
+                <label for="locations">Select Locations</label>
+                <select id="locations" name="locations" required>
+                    <option value="">Select Location</option>
+                    <option value="location1">New York</option>
+                    <option value="location2">Paris</option>
+                    <option value="location3">Tokyo</option>
+                    <option value="location4">Sydney</option>
+                    <option value="location5">Dubai</option>
+                    <option value="location6">London</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="travel-dates">Select Travel Dates</label>
+                <input type="date" id="travel-dates" name="travel-dates" required>
+            </div>
+
+            <div class="form-group">
+                <label for="transport">Type of Transport (Estimated Cost)</label>
+                <select id="transport" name="transport" required>
+                    <option value="">Select Transport</option>
+                    <option value="car">$100 - Car</option>
+                    <option value="bus">$50 - Bus</option>
+                    <option value="ship">$300 - Ship</option>
+                    <option value="plane">$500 - Plane</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="payment-method">Select Payment Method</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="upi">UPI</option>
+                    <option value="net-banking">Net Banking</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="upi-options" style="display:none;">
+                <label for="upi-type">Select UPI App</label>
+                <select id="upi-type" name="upi-type">
+                    <option value="">Select UPI App</option>
+                    <option value="phonepe">PhonePe</option>
+                    <option value="google-pay">Google Pay</option>
+                    <option value="paytm">Paytm</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="bank-options" style="display:none;">
+                <label for="bank-type">Select Bank</label>
+                <select id="bank-type" name="bank-type">
+                    <option value="">Select Bank</option>
+                    <option value="canara">Canara Bank</option>
+                    <option value="sbi">SBI Bank</option>
+                    <option value="axis">Axis Bank</option>
+                    <option value="icici">ICICI Bank</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="payment-status">Payment Status</label>
+                <input type="text" id="payment-status" name="payment-status" value="" readonly>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Handle Payment Method Selection
+        document.getElementById('payment-method').addEventListener('change', function () {
+            const paymentMethod = this.value;
+            const upiOptions = document.getElementById('upi-options');
+            const bankOptions = document.getElementById('bank-options');
+            const paymentStatus = document.getElementById('payment-status');
+
+            // Reset payment status
+            paymentStatus.value = '';
+
+            if (paymentMethod === 'upi') {
+                upiOptions.style.display = 'block';
+                bankOptions.style.display = 'none';
+            } else if (paymentMethod === 'net-banking') {
+                bankOptions.style.display = 'block';
+                upiOptions.style.display = 'none';
+            } else {
+                upiOptions.style.display = 'none';
+                bankOptions.style.display = 'none';
+            }
+        });
+
+        // Handle Payment Completion
+        document.getElementById('route-form').addEventListener('change', function () {
+            const paymentMethod = document.getElementById('payment-method').value;
+            const paymentStatus = document.getElementById('payment-status');
+            let isPaymentComplete = false;
+
+            if (paymentMethod === 'debit-card' || paymentMethod === 'credit-card') {
+                isPaymentComplete = true;
+            } else if (paymentMethod === 'upi') {
+                const upiType = document.getElementById('upi-type').value;
+                if (upiType) {
+                    isPaymentComplete = true;
+                }
+            } else if (paymentMethod === 'net-banking') {
+                const bankType = document.getElementById('bank-type').value;
+                if (bankType) {
+                    isPaymentComplete = true;
+                }
+            }
+
+            if (isPaymentComplete) {
+                paymentStatus.value = `Payment Successful`;
+            } else {
+                paymentStatus.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
